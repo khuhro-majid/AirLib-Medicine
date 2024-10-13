@@ -23,7 +23,9 @@ import com.arlib.compose.ui.viewmodel.MedicineViewModel
  */
 sealed class Screen(val route: String) {
     object Login : Screen("login") // Route for the Login screen
-    object MedicineList : Screen("medicine_list") // Route for the Medicine List screen
+    object MedicineList : Screen("medicine_list/{userName}") {
+        fun createRoute(userName: String) = "medicine_list/$userName"
+    }// Route for the Medicine List screen
     object MedicineDetail : Screen("medicine_detail/{medicineId}") {
         /**
          * Creates a route for the Medicine Detail screen with a specific medicine ID.
@@ -51,9 +53,12 @@ fun AppNavGraph(navController: NavHostController) {
             LoginScreen(navController)
         }
 
-        // Composable for the Medicine List screen
-        composable(Screen.MedicineList.route) {
-            MedicineListScreen(navController)
+        composable(
+            route = "medicine_list/{userName}",
+            arguments = listOf(navArgument("userName") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val userName = backStackEntry.arguments?.getString("userName")
+            MedicineListScreen(navController = navController, username = userName ?: "Dear User")
         }
 
         // Composable for the Medicine Detail screen with argument

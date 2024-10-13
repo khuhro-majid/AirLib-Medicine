@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.arlib.compose.data.local.entities.Medicine
 import com.arlib.compose.data.local.repositories.MedicineRepository
 import com.arlib.compose.domain.usecases.AirLibMedDetailUseCase
+import com.arlib.compose.domain.usecases.ArLibGreetingsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -25,7 +26,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MedicineViewModel @Inject constructor(
     private val repository: MedicineRepository,
-    private val medicineDetailUseCase: AirLibMedDetailUseCase
+    private val medicineDetailUseCase: AirLibMedDetailUseCase,
+    private val arLibGreetingsUseCase: ArLibGreetingsUseCase
 ) : ViewModel() {
 
     // List of medicines managed by this ViewModel
@@ -51,5 +53,9 @@ class MedicineViewModel @Inject constructor(
      */
     suspend fun getMedicineDetails(medicineId: String): Medicine? {
         return medicineDetailUseCase(medicineId) // Use case to fetch medicine details
+    }
+
+    fun getGreetingMessage():String?{
+       return arLibGreetingsUseCase()
     }
 }

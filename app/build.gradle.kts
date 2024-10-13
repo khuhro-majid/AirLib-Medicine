@@ -96,6 +96,9 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
     implementation(libs.network.logging)
+    testImplementation(libs.mockito)
+    testImplementation(libs.mockito.inline)
+    testImplementation(libs.mockito.kotlin)
     // Test dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

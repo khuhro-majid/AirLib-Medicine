@@ -13,10 +13,7 @@ composeUi = "1.5.2"
 navigationCompose = "2.7.2"
 viewModelCompose = "2.6.2"
 room = "2.5.2"
-#retrofit = "2.9.0"
-#hilt = "2.51.1"
-hiltDagger = "2.51.1"
-androidxJunit = "1.1.5"
+mockito = "3.12.4"
 espresso = "3.5.1"
 ktor = "2.2.3"
 hiltCompiler = "2.48"
@@ -62,8 +59,9 @@ jetbrains-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlin
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
 retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit"}
 network-logging = { group = "com.squareup.okhttp3" , name = "logging-interceptor", version.ref="loggin-interceptor"}
-
-
+mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockito" }
+mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version = "4.0.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

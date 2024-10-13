@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.arlib.compose.data.database.AppDatabase
 import com.arlib.compose.data.local.dao.MedicineDao
+import com.arlib.compose.domain.usecases.CheckInternetConnectionUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,4 +48,10 @@ object AppModule {
      */
     @Provides
     fun provideMedicineDao(db: AppDatabase): MedicineDao = db.medicineDao()
+
+    @Provides
+    @Singleton
+    fun provideCheckInternetConnectionUseCase(@ApplicationContext context: Context): CheckInternetConnectionUseCase {
+        return CheckInternetConnectionUseCase(context)
+    }
 }
